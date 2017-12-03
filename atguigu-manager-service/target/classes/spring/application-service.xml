@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 包扫瞄 -->
+	<context:component-scan base-package="com.atguigu.electricity.manager.service" />
+	<dubbo:annotation package="com.atguigu.electricity.manager.service" />
+	<!-- 配置dubbo应用服务 -->
+	<dubbo:application name="electricity-manager" />
+
+	<!-- dubbo注册中心服务 protocol:使用保存信息的协议 address:zookeeper的ip和端口号 -->
+	<dubbo:registry address="192.168.232.132:2181" protocol="zookeeper"></dubbo:registry>
+
+	<!-- 在duubo中暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+
+	<!-- 把代理对象注册到zookeeper中,默认 3秒 -->
+	<dubbo:service interface="com.atguigu.electricity.manager.service.GetDemo"
+	ref="getDemoImpl" timeout="1000000" />
+	<dubbo:service
+		interface="com.atguigu.electricity.manager.service.CategoryService"
+		ref="categoryServiceImpl" timeout="1000000" />
+	<dubbo:service interface="com.atguigu.electricity.manager.service.ProductService"
+		ref="productServiceImpl" timeout="1000000" />
+
+
+
+</beans>
