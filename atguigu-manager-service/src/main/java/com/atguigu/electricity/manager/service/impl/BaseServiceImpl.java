@@ -97,7 +97,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public void deleteBatch(List<?> ids) {
+	public void deleteBatch(List<Object> ids) {
 		Example example = new Example(clazz, true);
 		example.createCriteria().andEqualTo("id", ids);
 		mapper.deleteByExample(example);

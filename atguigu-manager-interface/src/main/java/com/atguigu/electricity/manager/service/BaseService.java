@@ -39,7 +39,7 @@ public interface BaseService<T> {
 	public void deleteById(Long id);
 	
 	//批量删除
-	public void deleteBatch(List<?> ids);
+	public void deleteBatch(List<Object> ids);
 	
 	
 }

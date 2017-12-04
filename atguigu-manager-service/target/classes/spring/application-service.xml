@@ -9,7 +9,7 @@
         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	<!-- 包扫瞄 -->
 	<context:component-scan base-package="com.atguigu.electricity.manager.service" />
-	<dubbo:annotation package="com.atguigu.electricity.manager.service" />
+<!-- 	<dubbo:annotation package="com.atguigu.electricity.manager.service" /> -->
 	<!-- 配置dubbo应用服务 -->
 	<dubbo:application name="electricity-manager" />
 
@@ -21,12 +21,13 @@
 
 	<!-- 把代理对象注册到zookeeper中,默认 3秒 -->
 	<dubbo:service interface="com.atguigu.electricity.manager.service.GetDemo"
-	ref="getDemoImpl" timeout="1000000" />
-	<dubbo:service
-		interface="com.atguigu.electricity.manager.service.CategoryService"
+		ref="getDemoImpl" timeout="1000000" />
+	<dubbo:service interface="com.atguigu.electricity.manager.service.CategoryService"
 		ref="categoryServiceImpl" timeout="1000000" />
 	<dubbo:service interface="com.atguigu.electricity.manager.service.ProductService"
 		ref="productServiceImpl" timeout="1000000" />
+	<dubbo:service interface="com.atguigu.electricity.manager.service.ProductdescService"
+		ref="productdescServiceImpl" timeout="1000000" />
 
 
 
